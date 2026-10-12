@@ -1,379 +1,162 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
+ 
 <head>
-<meta charset="utf-8">
-<title>ANKORU</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 5</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        
+        p {
+            font-family: "Poppins", sans-serif;
+        }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        h1{
+            font-family: "Poppins", sans-serif;
+            font-weight: bold;
+        }
+        
+        header{
+            width: 900px;
+            height: 500px;
+        }
+        .portada{
+            width: 940px;
+            height: 500px;
+            background-image: url("https://gizmodo.com/app/uploads/2025/10/Kamen-Rider-Toei-ZEZTZ-e1759928386823-1200x675.jpg");
+            background-repeat: no-repeat;
+            background-size: 940px;
+            border: 5px #ffffff;
+        }
+ 
+        .navbar {
+            width: 900px;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            overflow: hidden;
+            background-color: #333;
+            text-align: center;
+            z-index: 2;
+        }
+ 
+        a{
+            color: #f2f2f2;
+            padding: 14px;
+            font-size: 15px;
+            font-family: "Poppins", sans-serif;
+        }
+ 
+        footer {
+            height: 200px;
+            width: 925px;
+            background-color: #333;
+        }
 
-<style>
+        .abajo{
+            text-align: center;
+            padding-top: 150px;
+        }
+ 
+ 
+        .logo {
+            height: 50px;
+            position: fixed;
+            left: 20px;
+            z-index: 3;
+        }
+ 
+        .deco {
+            height: 200px;
+            position: absolute;
+            top: 450px;
+            left: 700px;
+            z-index: 2;
+        }
 
-html {
-  scroll-behavior: smooth;
-}
+        #cuerpo{
+            width: 900px;
+            height: 500px;
+        }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Poppins", Arial, sans-serif;
-  background: linear-gradient(180deg, #FF9DD2 0%, #F7F1FF 25%, #ECECFF 60%, #9DA1FF 100%);
-  color: #333;
-  overflow-x: hidden;
-}
+        .Fondopj{
+            background-color: #333;
+            height: 400px;
+            width: 200px;
+            position: absolute;
+            z-index: 0;
+        }
 
-.container {
-  width: 960px;
-  margin: 0 auto;
-}
+        .KRZ{
+            margin-top: 50px;
+            margin-left: 70px;
+            height: 400px;
+            position: absolute;
+            z-index: 1;
+        }
 
-.grid-12 {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 20px;
-}
+        .KRZinfo{
+            text-align: center;
+            margin-top: 100px;
+            margin-left: 300px;
+            margin-right: 350px;
+            background-color: #333;
+            border-radius: 10px 10px 10px 10px;
+            -webkit-border-radius: 10px 10px 10px 10px;
+            -moz-border-radius: 10px 10px 10px 10px;
+            color: #ffffff;
+            position: absolute;
+            z-index: 1;
+        }
+        
+        .Frase{
+            text-align: center;
+            margin-top: 250px;
+            margin-left: 350px;
+            margin-right: 350px;
+            position: absolute;
+            z-index: 0;
+            color: darkcyan;
+        }
 
-
-.grid-guide div {
-  height: 120px;
-  background: rgba(255, 157, 210, 0.25);
-  border: 1px dashed #FF9DD2;
-}
-
-
-a {
-  color: #FF9DD2;
-  text-decoration: none;
-  font-weight: 700;
-  transition: 0.3s ease;
-}
-
-a:hover {
-  opacity: 0.7;
-}
-
-a:active {
-  color: #9DA1FF;
-}
-
-a:visited {
-  opacity: 0.9;
-}
-
-
-.header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 18px 45px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(255,255,255,0.5);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  z-index: 2000;
-}
-
-.header img {
-  height: 50px;
-}
-
-.nav a {
-  margin: 0 18px;
-  color: #9DA1FF;
-  font-weight: bold;
-  font-size: 16px;
-}
-
-
-.hide-nav {
-  transform: translateY(-120%);
-  transition: 0.4s ease;
-}
-
-.show-nav {
-  transform: translateY(0%);
-  transition: 0.4s ease;
-}
-
-
-.hero {
-  margin-top: 140px;
-  text-align: center;
-}
-
-.hero img {
-  width: 85%;
-  max-width: 980px;
-  border-radius: 25px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-}
-
-.hero h1 {
-  color: #FF9DD2;
-  margin-top: 25px;
-  font-size: 38px;
-  font-weight: 700;
-}
-
-
-.section {
-  width: 90%;
-  max-width: 1200px;
-  margin: 100px auto;
-}
-
-.section h2 {
-  color: #9DA1FF;
-  font-size: 55px;
-  border-left: 6px solid #FF9DD2;
-  padding-left: 15px;
-  margin-bottom: 30px;
-  font-weight: 800;
-}
-
-.card {
-  background: rgba(255,255,255,0.75);
-  backdrop-filter: blur(6px);
-  border-radius: 25px;
-  padding: 40px;
-  margin-top: 35px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-  border-left: 6px solid #FF9DD2;
-}
-
-.card img {
-  float: left;
-  width: 35%;
-  max-width: 260px;
-  margin-right: 25px;
-  border-radius: 20px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
-}
-
-
-.personajes-section {
-  width: 90%;
-  max-width: 1200px;
-  margin: 100px auto;
-}
-	
-.personajes-section h2 {
-  color: #9DA1FF;
-  font-size: 55px;
-  border-left: 6px solid #FF9DD2;
-  padding-left: 15px;
-  margin-bottom: 30px;
-  font-weight: 800;
-}
-
-.personajes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-}
-
-.personaje-card {
-  background: rgba(255,255,255,0.85);
-  border-radius: 25px;
-  padding: 18px;
-  border: 3px solid #FF9DD2;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: 0.3s;
-}
-
-.personaje-card:hover {
-  transform: scale(1.04);
-}
-
-.personaje-card img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  border-radius: 18px;
-}
-
-.tiles {
-  display: grid;
-  gap: 30px;
-  grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
-  margin-top: 40px;
-}
-
-.tile {
-  background: rgba(255,255,255,0.8);
-  backdrop-filter: blur(4px);
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
-  border-left: 6px solid #9DA1FF;
-}
-
-
-.formulario {
-  width: 90%;
-  max-width: 800px;
-  margin: 0 auto;
-  background: rgba(255,255,255,0.8);
-  padding: 45px;
-  border-radius: 25px;
-  border-left: 6px solid #9DA1FF;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-}
-
-.formulario input,
-.formulario textarea {
-  width: 100%;
-  padding: 12px;
-  margin-top: 12px;
-  border-radius: 12px;
-  border: 2px solid #FF9DD2;
-  font-size: 16px;
-  font-family: inherit;
-}
-
-.formulario button {
-  margin-top: 18px;
-  background: #FF9DD2;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 12px;
-  font-size: 18px;
-  color: white;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-
-footer {
-  margin-top: 120px;
-  padding: 50px;
-  text-align: center;
-  background: linear-gradient(90deg, #9DA1FF, #FF9DD2);
-  color: white;
-}
-
-footer img {
-  height: 70px;
-}
-	
-footer a {
-  color:white
-}
-	
-</style>
+    </style>
 </head>
-
+ 
 <body>
-
-<header class="header">
-  <img src="LOGO.png" alt="Logo ANKORU">
-  <nav class="nav">
-    <a href="/index.html">Inicio</a>
-    <a href="/Historia.html">Historia</a>
-    <a href="/Estrellas.html">Estrellas</a>
-    <a href="/galeria.html">Galería</a>
-    <a href="/sns.html">SNS</a>
-  </nav>
-</header>
-
-<section class="hero" id="inicio">
-  <img src="Banner.png" alt="Banner ANKORU">
-  <h1>Estrellas que buscan brillar en esta galaxia</h1>
-  <p>Grupo independiente de idols</p>
-</section>
-
-<section class="section container" id="historia">
-  <h2>HISTORIA</h2>
-  <div class="card">
-    <img src="Perfil2.png" alt="perfil2">
-    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-  </div>
-</section>
-
-<section class="personajes-section" id="personajes">
-  <h2>ESTRELLAS</h2>
-  <div class="personajes-grid container">
-    <div class="personaje-card"><img src="Hyeko.png" alt="Hyeko"><h3>Hyeko</h3></div>
-    <div class="personaje-card"><img src="Hisa.png" alt="Hisa"><h3>Hisa</h3></div>
-    <div class="personaje-card"><img src="Koko.png" alt="Koko"><h3>Kokooshy</h3></div>
-    <div class="personaje-card"><img src="Kotsuo.png" alt="Kotsuo"><h3>Kotsuo</h3></div>
-    <div class="personaje-card"><img src="Pixel.png" alt="Pixel"><h3>Pixel</h3></div>
-    <div class="personaje-card"><img src="Tama.png" alt="Tama"><h3>Tama</h3></div>
-    <div class="personaje-card"><img src="Aster.png" alt="Aster"><h3>Aster</h3></div>
-    <div class="personaje-card"><img src="Coffee.png" alt="Coffee"><h3>Coffee</h3></div>
-    <div class="personaje-card"><img src="TsuTsu.png" alt="TsuTsu"><h3>TsuTsu</h3></div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Explora más</h2>
-
-  <div class="tiles">
-    <div class="tile">
-      <h3><a href="/Historia.html">Historia</a></h3>
-      <p>Conoce el lore del proyecto.</p>
+    <div id="Arriba">
+        <img class="logo" src="https://upload.wikimedia.org/wikipedia/vi/thumb/a/a6/Kamen_Rider_ZEZTZ_Logo.png/960px-Kamen_Rider_ZEZTZ_Logo.png" alt="">
+        <img class="deco" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5a9a381b-596b-4763-9d81-a66d5d6d0bd7/dk4anxj-587f4342-2ccc-433a-bcb8-cc4cfa02b869.png/v1/fill/w_894,h_894/kamen_rider_zeztz_icon_by_dreamvirusomega_dk4anxj-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTE4OSIsInBhdGgiOiJcL2ZcLzVhOWEzODFiLTU5NmItNDc2My05ZDgxLWE2NmQ1ZDZkMGJkN1wvZGs0YW54ai01ODdmNDM0Mi0yY2NjLTQzM2EtYmNiOC1jYzRjZmEwMmI4NjkucG5nIiwid2lkdGgiOiI8PTExODkifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.Aqm0VOTXophMOnm3JGqPbSpOOPHnTO5LNWsaUpVCxIM" alt="">
     </div>
 
-    <div class="tile">
-      <h3><a href="/sns.html">Redes Sociales</a></h3>
-      <p>Sigue nuestras actividades.</p>
+    <div class="navbar">
+        <a href="#Arriba">Arriba</a>
+        <a href="#cuerpo">Kamen Rider Z</a>
+        <a href="#final">Final</a>
+    </div>
+    
+    <header>
+        <div class="portada"></div>
+    </header>
+ 
+    <div id="cuerpo">
+        <div class="Fondopj"></div>
+            <img class="KRZ" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/8675c870-8b97-42cc-bce3-77a0ba548f92/dk7pekn-7bb248c1-e976-47ec-b369-c90add43f0fa.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzg2NzVjODcwLThiOTctNDJjYy1iY2UzLTc3YTBiYTU0OGY5MlwvZGs3cGVrbi03YmIyNDhjMS1lOTc2LTQ3ZWMtYjM2OS1jOTBhZGQ0M2YwZmEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.f2Cyy-yEKIBM_a4R39xFWubC5SNByC3PBTT_-KYXa_o" alt="">
+        <div class="KRZinfo">
+            <p>Un joven común y corriente se convierte en un "agente invencible" en sus sueños, ¡Protege a la humanidad de las Pesadillas, los monstruos de pesadilla que traen las peores realidades!</p>
+        </div>
+        <div class="Frase">
+            <h1>¡AHORA COMIENZA LA MISIÓN!</h1>
+        </div>
     </div>
 
-    <div class="tile">
-      <h3><a href="/Estrellas.html">Integrantes</a></h3>
-      <p>Conoce a quienes dan vida a ANKORU.</p>
-    </div>
-
-    <div class="tile">
-      <h3><a href="/galeria.html">Discografía</a></h3>
-      <p>Canciones, covers y más.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="contacto">
-  <h2>CONTACTO</h2>
-  <div class="formulario">
-    <form>
-      <label>Nombre</label>
-      <input type="text" required>
-
-      <label>Correo</label>
-      <input type="email" required>
-
-      <label>Mensaje</label>
-      <textarea rows="5" required></textarea>
-
-      <button>Enviar</button>
-    </form>
-  </div>
-</section>
-
-<footer>
-  <img src="LOGO.png">
-  <p><a href="#inicio">Volver arriba</a></p>
-</footer>
-
-<script>
-
-let lastScroll = 0;
-const header = document.querySelector('.header');
-
-window.addEventListener('scroll', () => {
-  const current = window.pageYOffset;
-  if (current > lastScroll) {
-    header.classList.add('hide-nav');
-  } else {
-    header.classList.remove('hide-nav');
-  }
-  lastScroll = current;
-});
-</script>
-
+    <footer id="final">
+        <div class="abajo">
+            <a href="#Arriba">Arriba</a>
+            <a href="#KR">Kamen Rider Z</a>
+            <a href="#final">Final</a>
+        </div>
+    </footer>
 </body>
+ 
 </html>
-
